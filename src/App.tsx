@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   return (
     <>
-      <Atom.Button variant={'secondary'}>Hola</Atom.Button>
+      <Atom.Button variant={'primary'}>Hola</Atom.Button>
     </>
   );
 }

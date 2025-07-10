@@ -25,3 +25,7 @@ dist-ssr
 
 # Jest coverage reports
 coverage/
+
+# Storybook
+*storybook.log
+storybook-static
