@@ -1,10 +1,12 @@
 import { Outlet } from 'react-router';
-import { Atom } from '../../atoms';
+import { NavMenu } from './navMenu';
 
 const LayoutAuthenticated = () => {
   return (
-    <div>
-      <Atom.NavMenu />
+    <div className="bg-transparent grid grid-rows-[80px_1fr] h-screen w-screen">
+      <header>
+        <NavMenu />
+      </header>
       <main className="p-4">
         <Outlet />
       </main>
