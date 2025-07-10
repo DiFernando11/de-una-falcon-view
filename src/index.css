@@ -16,8 +16,15 @@
 }
 
 body {
-  background-image: url('./assets/images/background.png');
+  background-image:
+    radial-gradient(
+      circle at center,
+      rgba(0, 0, 0, 0) 30%,
+      rgba(0, 0, 0, 0.92) 80%,
+      rgba(0, 0, 0, 1) 100%
+    ),
+    url('./assets/images/background.png');
   background-size: cover;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   background-position: center;
 }
