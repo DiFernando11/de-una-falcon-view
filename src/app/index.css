@@ -1,6 +1,18 @@
 @import 'tailwindcss';
 
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('../assets/fonts/space.ttf') format('truetype');
+  font-weight: 100 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
+  /* Fonts */
+  --font-family-space: 'Space Grotesk', ui-sans-serif, system-ui;
+
+  /* colors */
   --color-primary-100: #f1e7ff;
   --color-primary-200: #d3b9ff;
   --color-primary-300: #b68bff;

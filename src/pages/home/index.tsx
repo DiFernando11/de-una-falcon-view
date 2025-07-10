@@ -29,7 +29,7 @@ function Home() {
 
   return (
     <div>
-      <h1>SpaceX Launches</h1>
+      <Atom.Text textType={'heading'}>SpaceX Launches</Atom.Text>
       <ul>
         {launches?.map((launch) => (
           <li key={launch.id}>
