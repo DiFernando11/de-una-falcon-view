@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`<Card /> should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="rounded-2xl p-6 transition-all relative overflow-hidden shadow-lg border bg-red-50 border-red-200 hover:shadow-red-300/40 animate-[launch-glow_1.8s_cubic-bezier(.32,1.25,.35,.96)_infinite_alternate]"
+  >
+    Snapshot Card
+  </div>
+</DocumentFragment>
+`;

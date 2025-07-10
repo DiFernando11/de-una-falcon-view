@@ -28,3 +28,38 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.glassBlurDark {
+  background: rgba(8, 8, 8, 0.18);
+  border-radius: 1.25rem; /* igual a rounded-2xl */
+  box-shadow:
+    0 4px 30px rgba(34, 197, 246, 0.13),
+    0 1.5px 8px 0 rgba(99, 102, 241, 0.12);
+  border: 1.5px solid rgba(34, 197, 246, 0.24);
+  backdrop-filter: blur(13.8px);
+  -webkit-backdrop-filter: blur(13.8px);
+}
+
+.glassBlurWhite {
+  background: rgba(249, 249, 249, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12.2px);
+  -webkit-backdrop-filter: blur(12.2px);
+  border: 1px solid rgba(249, 249, 249, 0.3);
+}
+
+.card-hover {
+  transition:
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s,
+    transform 0.33s;
+}
+
+.card-hover:hover {
+  box-shadow:
+    0 8px 44px 0 rgba(99, 102, 241, 0.2),
+    0 6px 22px 0 rgba(34, 197, 246, 0.22);
+  border-color: rgba(99, 102, 241, 0.45);
+  transform: translateY(-2px) scale(1.03) rotate(-0.5deg);
+}
