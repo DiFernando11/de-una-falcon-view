@@ -8,7 +8,6 @@ function App() {
   useEffect(() => {
     const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
     if (GA_MEASUREMENT_ID) {
-      console.log('ME INICIE CON ', GA_MEASUREMENT_ID);
       ReactGA.initialize(GA_MEASUREMENT_ID);
     }
   }, []);
