@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState } from '@/store';
 import type { LaunchAdapter } from '@/domain/models';
-import { addFavorite, removeFavorite } from '@/store/favoritesSlice';
+import { addFavorite, clearFavorites, removeFavorite } from '@/store/favoritesSlice';
 
 export const useFavoritesLaunch = () => {
   const dispatch = useDispatch();
@@ -13,6 +13,9 @@ export const useFavoritesLaunch = () => {
   };
   const handleAddFavorite = (launch: LaunchAdapter): void => {
     dispatch(addFavorite(launch));
+  };
+  const handleClearFavorites = (): void => {
+    dispatch(clearFavorites());
   };
 
   const handleAddOrRemoveFavoriteLaunch = (launch: LaunchAdapter) => {
@@ -28,5 +31,12 @@ export const useFavoritesLaunch = () => {
     [favorites]
   );
 
-  return { isFavorite, handleRemoveFavorite, handleAddFavorite, handleAddOrRemoveFavoriteLaunch };
+  return {
+    isFavorite,
+    handleRemoveFavorite,
+    handleAddFavorite,
+    handleAddOrRemoveFavoriteLaunch,
+    handleClearFavorites,
+    favorites,
+  };
 };

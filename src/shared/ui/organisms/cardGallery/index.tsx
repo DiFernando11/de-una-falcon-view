@@ -16,7 +16,7 @@ const CardGallery: React.FC<CardGalleryProps> = ({
   >
     {cards.map((cardProps) => (
       <Box
-        style={{ minWidth: minCardWidth }}
+        style={{ minWidth: minCardWidth, maxWidth: 260 }}
         key={cardProps.id}
         className={twMerge(`flex-1 w-full flex flex-col`)}
       >

@@ -93,8 +93,9 @@ const LaunchDetailCard = ({
             <ExternalLink className="w-4 h-4" />
           </a>
         )}
-        <Atom.Box className="flex gap-3 mt-4 justify-center w-full">
+        <Atom.Box className="flex gap-3 mt-4 justify-center w-full cursor-pointer">
           <Atom.Button
+            className="cursor-pointer"
             variant="outline"
             onClick={() =>
               handleAddOrRemoveFavoriteLaunch({
@@ -111,7 +112,7 @@ const LaunchDetailCard = ({
                 fill={isFavorite ? 'currentColor' : 'none'}
                 strokeWidth={2}
               />
-              {isFavorite ? 'Favorito' : 'Agregar a favoritos'}
+              {isFavorite ? 'Favorite' : 'Add to favorites'}
             </Atom.Text>
           </Atom.Button>
         </Atom.Box>
