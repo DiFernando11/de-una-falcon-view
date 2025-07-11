@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import ReactGA from 'react-ga4';
 import type { RootState } from '@/store';
 import type { LaunchAdapter } from '@/domain/models';
 import { addFavorite, clearFavorites, removeFavorite } from '@/store/favoritesSlice';
@@ -21,7 +22,19 @@ export const useFavoritesLaunch = () => {
   const handleAddOrRemoveFavoriteLaunch = (launch: LaunchAdapter) => {
     if (isFavorite(launch.id)) {
       handleRemoveFavorite(launch.id);
+      ReactGA.event({
+        category: 'Favorites',
+        action: 'Remove',
+        label: launch.missionName,
+        value: 1,
+      });
     } else {
+      ReactGA.event({
+        category: 'Favorites',
+        action: 'Add',
+        label: launch.missionName,
+        value: 1,
+      });
       handleAddFavorite(launch);
     }
   };
