@@ -1,6 +1,6 @@
 import type { LaunchAdapter } from '@/domain/models';
 import { useGetLaunchesQuery } from '@/services';
-import { Atom, Molecules } from '@/shared/ui';
+import { Atom, Organisms } from '@/shared/ui';
 import type { RootState } from '@/store';
 import { addFavorite, removeFavorite } from '@/store/favoritesSlice';
 import { useCallback } from 'react';
@@ -29,24 +29,31 @@ function Home() {
 
   return (
     <Atom.Box className="space-y-4">
-      <Atom.Text as={'h1'} textType={'heading'}>
+      <Atom.Text as="h1" textType="heading">
         SpaceX Launches
       </Atom.Text>
-      <ul className="space-y-4">
-        {launches?.map((launch) => (
-          <Molecules.Card theme="glassDark" key={launch.id}>
-            <li>
-              <strong>{launch.missionName}</strong>
-              <Atom.Button
-                variant={'outline'}
-                onClick={() => handleAddOrRemoveFavoriteLaunch(launch)}
-              >
-                {isFavorite(launch.id) ? 'ELIMINAR' : 'AGREGAR'}
-              </Atom.Button>
-            </li>
-          </Molecules.Card>
-        ))}
-      </ul>
+      <Organisms.CardGallery
+        cards={
+          launches?.map((launch) => ({
+            key: launch.id,
+            theme: 'glassDark',
+            animated: true,
+            children: (
+              <div className="flex flex-col items-center">
+                <Atom.Text textType="heading" color="primary" as="h3">
+                  {launch.missionName}
+                </Atom.Text>
+                <Atom.Button
+                  variant={isFavorite(launch.id) ? 'secondary' : 'outline'}
+                  onClick={() => handleAddOrRemoveFavoriteLaunch(launch)}
+                >
+                  {isFavorite(launch.id) ? 'ELIMINAR' : 'AGREGAR'}
+                </Atom.Button>
+              </div>
+            ),
+          })) ?? []
+        }
+      />
     </Atom.Box>
   );
 }
