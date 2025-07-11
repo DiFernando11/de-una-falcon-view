@@ -9,7 +9,7 @@ function usePageView() {
   const location = useLocation();
 
   useEffect(() => {
-    console.log('DISOARE REACT SEND');
+    console.log('DISOARE REACT SEND', location.pathname);
     ReactGA.send({ hitType: 'pageview', page: location.pathname });
   }, [location]);
 }
