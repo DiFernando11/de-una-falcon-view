@@ -7,10 +7,11 @@ exports[`<CardGallery /> should match snapshot 1`] = `
   >
     <div
       class="flex-1 w-full flex flex-col"
-      style="min-width: 180px;"
+      style="min-width: 180px; max-width: 300px;"
     >
       <div
         class="rounded-2xl p-6 transition-all relative overflow-hidden shadow-lg bg-gradient-to-br border cursor-pointer card-hover glassBlurDark flex-1"
+        id="card-1"
       >
         <span>
           Card 1
@@ -19,10 +20,11 @@ exports[`<CardGallery /> should match snapshot 1`] = `
     </div>
     <div
       class="flex-1 w-full flex flex-col"
-      style="min-width: 180px;"
+      style="min-width: 180px; max-width: 300px;"
     >
       <div
         class="rounded-2xl p-6 transition-all relative overflow-hidden shadow-lg bg-gradient-to-br border cursor-pointer card-hover glassBlurWhite flex-1"
+        id="card-2"
       >
         <span>
           Card 2
@@ -31,10 +33,11 @@ exports[`<CardGallery /> should match snapshot 1`] = `
     </div>
     <div
       class="flex-1 w-full flex flex-col"
-      style="min-width: 180px;"
+      style="min-width: 180px; max-width: 300px;"
     >
       <div
         class="rounded-2xl p-6 transition-all relative overflow-hidden shadow-lg bg-gradient-to-br border cursor-pointer card-hover glassBlurDark flex-1"
+        id="card-3"
       >
         <span>
           Card 3
