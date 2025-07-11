@@ -1,12 +1,16 @@
 import type { LaunchAdapter } from '@/domain/models';
 import { useGetLaunchesQuery } from '@/services';
+import LaunchPreviewCard from '@/shared/components/launchPreviewCard';
+import { ROUTES_CLIENT } from '@/shared/constants';
 import { Atom, Organisms } from '@/shared/ui';
 import type { RootState } from '@/store';
 import { addFavorite, removeFavorite } from '@/store/favoritesSlice';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 
 function Home() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { data: launches, isLoading, isError } = useGetLaunchesQuery({ limit: 5, offset: 0 });
   const favorites = useSelector((state: RootState) => state.favorites.favorites);
@@ -15,6 +19,10 @@ function Home() {
     (id: string) => favorites.some((fav) => fav.id === id),
     [favorites]
   );
+
+  const handleRedirect = (id: string) => {
+    navigate(ROUTES_CLIENT.LAUNCH_DETAIL(id));
+  };
 
   const handleAddOrRemoveFavoriteLaunch = (launch: LaunchAdapter) => {
     if (isFavorite(launch.id)) {
@@ -35,21 +43,15 @@ function Home() {
       <Organisms.CardGallery
         cards={
           launches?.map((launch) => ({
-            key: launch.id,
+            id: launch.id,
             theme: 'glassDark',
-            animated: true,
             children: (
-              <div className="flex flex-col items-center">
-                <Atom.Text textType="heading" color="primary" as="h3">
-                  {launch.missionName}
-                </Atom.Text>
-                <Atom.Button
-                  variant={isFavorite(launch.id) ? 'secondary' : 'outline'}
-                  onClick={() => handleAddOrRemoveFavoriteLaunch(launch)}
-                >
-                  {isFavorite(launch.id) ? 'ELIMINAR' : 'AGREGAR'}
-                </Atom.Button>
-              </div>
+              <LaunchPreviewCard
+                onClick={() => handleRedirect(launch.id)}
+                isFavorite={isFavorite(launch.id)}
+                launch={launch}
+                handleAddOrRemoveFavoriteLaunch={() => handleAddOrRemoveFavoriteLaunch(launch)}
+              />
             ),
           })) ?? []
         }
