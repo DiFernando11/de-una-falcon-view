@@ -3,6 +3,7 @@ import { Atom, Molecules } from '@/shared/ui';
 import clsx from 'clsx';
 import type { LaunchDetailCardProps } from './types';
 import { formatDate } from '@/shared/utils';
+import SkeletonDetail from './skeletonDetail';
 
 const LaunchDetailCard = ({
   launch,
@@ -120,5 +121,7 @@ const LaunchDetailCard = ({
     </Molecules.Card>
   );
 };
+
+LaunchDetailCard.Skeleton = SkeletonDetail;
 
 export default LaunchDetailCard;

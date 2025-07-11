@@ -6,7 +6,7 @@ import type { CardGalleryProps } from './types';
 
 const CardGallery: React.FC<CardGalleryProps> = ({
   cards,
-  minCardWidth = 260,
+  minCardWidth = 300,
   className,
   ...rest
 }) => (
@@ -16,7 +16,7 @@ const CardGallery: React.FC<CardGalleryProps> = ({
   >
     {cards.map((cardProps) => (
       <Box
-        style={{ minWidth: minCardWidth, maxWidth: 260 }}
+        style={{ minWidth: minCardWidth, maxWidth: 300 }}
         key={cardProps.id}
         className={twMerge(`flex-1 w-full flex flex-col`)}
       >

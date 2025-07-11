@@ -2,29 +2,27 @@ import { useNavigate } from 'react-router';
 import { useGetLaunchesQuery } from '@/services';
 import LaunchPreviewCard from '@/shared/components/launchPreviewCard';
 import { ROUTES_CLIENT } from '@/shared/constants';
-import { Atom, Organisms } from '@/shared/ui';
-import type { LaunchAdapter } from '@/domain/models';
+import { Atom, Molecules, Organisms } from '@/shared/ui';
 import { useFavoritesLaunch } from '@/shared/hooks';
+import { useState } from 'react';
+
+const LIMIT = 20;
 
 function Home() {
   const navigate = useNavigate();
-  const { isFavorite, handleAddFavorite, handleRemoveFavorite } = useFavoritesLaunch();
-  const { data: launches, isLoading, isError } = useGetLaunchesQuery({ limit: 5, offset: 0 });
+  const [offset, setOffset] = useState(0);
+  const { isFavorite, handleAddOrRemoveFavoriteLaunch } = useFavoritesLaunch();
+  const {
+    data: launches = [],
+    isFetching,
+    isError,
+  } = useGetLaunchesQuery({ limit: LIMIT, offset });
+
+  const handleLoadMore = () => setOffset((prev) => prev + LIMIT);
 
   const handleRedirect = (id: string) => {
     navigate(ROUTES_CLIENT.LAUNCH_DETAIL(id));
   };
-
-  const handleAddOrRemoveFavoriteLaunch = (launch: LaunchAdapter) => {
-    if (isFavorite(launch.id)) {
-      handleRemoveFavorite(launch.id);
-    } else {
-      handleAddFavorite(launch);
-    }
-  };
-
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error loading launches</div>;
 
   return (
     <Atom.Box className="space-y-4">
@@ -32,21 +30,42 @@ function Home() {
         SpaceX Launches
       </Atom.Text>
       <Organisms.CardGallery
-        cards={
-          launches?.map((launch) => ({
-            id: launch.id,
-            theme: 'glassDark',
-            children: (
-              <LaunchPreviewCard
-                onClick={() => handleRedirect(launch.id)}
-                isFavorite={isFavorite(launch.id)}
-                launch={launch}
-                handleAddOrRemoveFavoriteLaunch={() => handleAddOrRemoveFavoriteLaunch(launch)}
-              />
-            ),
-          })) ?? []
-        }
+        cards={launches.map((launch) => ({
+          id: launch.id,
+          theme: 'glassDark',
+          children: (
+            <LaunchPreviewCard
+              onClick={() => handleRedirect(launch.id)}
+              isFavorite={isFavorite(launch.id)}
+              launch={launch}
+              handleAddOrRemoveFavoriteLaunch={() => handleAddOrRemoveFavoriteLaunch(launch)}
+            />
+          ),
+        }))}
       />
+      {isFetching && (
+        <Organisms.CardGallery
+          cards={Array.from({ length: LIMIT }).map((_, idx) => ({
+            id: `skeleton-${idx}`,
+            theme: 'glassDark',
+            children: <LaunchPreviewCard.Skeleton />,
+          }))}
+        />
+      )}
+      {isError && (
+        <Molecules.Alert type="error">
+          <Atom.Text>
+            An error occurred while fetching the SpaceX launches. Please try again later.
+          </Atom.Text>
+        </Molecules.Alert>
+      )}
+      {!isFetching && launches.length && launches.length % LIMIT === 0 && (
+        <Atom.Box className="flex justify-center mt-8">
+          <Atom.Button variant="primary" onClick={handleLoadMore}>
+            <Atom.Text>Ver mas</Atom.Text>
+          </Atom.Button>
+        </Atom.Box>
+      )}
     </Atom.Box>
   );
 }

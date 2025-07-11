@@ -29,13 +29,13 @@ export const useFavoritesLaunch = () => {
         value: 1,
       });
     } else {
+      handleAddFavorite(launch);
       ReactGA.event({
         category: 'Favorites',
         action: 'Add',
         label: launch.missionName,
         value: 1,
       });
-      handleAddFavorite(launch);
     }
   };
 

@@ -1,4 +1,5 @@
 import ErrorFallback from '@/shared/components/errorFallback';
+import LoaderFallback from '@/shared/components/loaderFallback';
 import * as Sentry from '@sentry/react';
 import { Suspense, type ReactNode } from 'react';
 
@@ -9,7 +10,7 @@ interface PageBoundaryProps {
 
 const PageBoundary = ({ children, fallback }: PageBoundaryProps) => (
   <Sentry.ErrorBoundary fallback={<ErrorFallback />}>
-    <Suspense fallback={fallback ?? <div>Cargando...</div>}>{children}</Suspense>
+    <Suspense fallback={fallback ?? <LoaderFallback />}>{children}</Suspense>
   </Sentry.ErrorBoundary>
 );
 
