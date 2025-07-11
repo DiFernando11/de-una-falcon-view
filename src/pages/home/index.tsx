@@ -25,7 +25,7 @@ function Home() {
   };
 
   return (
-    <Atom.Box className="space-y-4">
+    <Atom.Box className="space-y-8">
       <Atom.Text as="h1" textType="heading">
         SpaceX Launches
       </Atom.Text>
