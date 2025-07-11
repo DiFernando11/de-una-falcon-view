@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`<CardGallery /> should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="flex gap-2 flex-wrap justify-center items-stretch w-full"
+  >
+    <div
+      class="flex-1 w-full flex flex-col"
+      style="min-width: 180px;"
+    >
+      <div
+        class="rounded-2xl p-6 transition-all relative overflow-hidden shadow-lg bg-gradient-to-br border cursor-pointer card-hover glassBlurDark flex-1"
+      >
+        <span>
+          Card 1
+        </span>
+      </div>
+    </div>
+    <div
+      class="flex-1 w-full flex flex-col"
+      style="min-width: 180px;"
+    >
+      <div
+        class="rounded-2xl p-6 transition-all relative overflow-hidden shadow-lg bg-gradient-to-br border cursor-pointer card-hover glassBlurWhite flex-1"
+      >
+        <span>
+          Card 2
+        </span>
+      </div>
+    </div>
+    <div
+      class="flex-1 w-full flex flex-col"
+      style="min-width: 180px;"
+    >
+      <div
+        class="rounded-2xl p-6 transition-all relative overflow-hidden shadow-lg bg-gradient-to-br border cursor-pointer card-hover glassBlurDark flex-1"
+      >
+        <span>
+          Card 3
+        </span>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

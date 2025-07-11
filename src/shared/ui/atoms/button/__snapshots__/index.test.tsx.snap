@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`<Button /> should match snapshot 1`] = `
+<DocumentFragment>
+  <button
+    class="inline-flex items-center justify-center gap-2 rounded transition-all font-semibold bg-blue-600 text-white hover:bg-blue-700 text-base px-4 py-2"
+  >
+    Botón snapshot
+  </button>
+</DocumentFragment>
+`;

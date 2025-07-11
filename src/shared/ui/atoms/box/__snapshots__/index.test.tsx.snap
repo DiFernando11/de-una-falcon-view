@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`<Box /> should match snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <span>
+      Hola mundo
+    </span>
+  </div>
+</DocumentFragment>
+`;

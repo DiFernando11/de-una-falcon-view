@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`<Text /> should match snapshot 1`] = `
+<DocumentFragment>
+  <h1
+    class="font-family-space font-bold text-3xl leading-tight text-red-600"
+  >
+    Texto snapshot
+  </h1>
+</DocumentFragment>
+`;

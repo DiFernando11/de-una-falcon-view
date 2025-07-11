@@ -1,0 +1,64 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('../assets/fonts/space.ttf') format('truetype');
+  font-weight: 100 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* Fonts */
+  --font-family-space: 'Space Grotesk', ui-sans-serif, system-ui;
+
+  /* colors */
+  --color-primary-100: #f1e7ff;
+  --color-primary-200: #d3b9ff;
+  --color-primary-300: #b68bff;
+  --color-primary-400: #9a5eff;
+  --color-primary-500: #8e5ae3;
+  --color-primary-600: #6f41c2;
+  --color-primary-700: #502ba2;
+  --color-primary-800: #361b82;
+  --color-primary-900: #24105f;
+
+  /* Secondary */
+  --color-secondary-100: #f3e1fb;
+  --color-secondary-200: #e3b5f7;
+  --color-secondary-300: #d289f2;
+  --color-secondary-400: #c35fec;
+  --color-secondary-500: #a646dd;
+  --color-secondary-600: #8432b3;
+  --color-secondary-700: #64208a;
+  --color-secondary-800: #451260;
+  --color-secondary-900: #2c0940;
+
+  /* Accent */
+  --color-accent-100: #e3f5ff;
+  --color-accent-200: #b8e4ff;
+  --color-accent-300: #8bd4ff;
+  --color-accent-400: #5ec3ff;
+  --color-accent-500: #6fc5ff;
+  --color-accent-600: #41a3db;
+  --color-accent-700: #2781b7;
+  --color-accent-800: #155f93;
+  --color-accent-900: #0a4170;
+
+  /* Extra */
+  --color-background: #0d0b1f;
+  --color-surface: #1e1b3a;
+  --color-white: #f5f5f5;
+  --color-muted: #bbbbbb;
+  --color-error: #ff6f91;
+
+  --color-highlight-100: #ffe4f7;
+  --color-highlight-200: #fca3e1;
+  --color-highlight-300: #f46bc9;
+  --color-highlight-400: #e73db1;
+  --color-highlight-500: #d3169d;
+  --color-highlight-600: #a5117a;
+  --color-highlight-700: #790c57;
+  --color-highlight-800: #4e0635;
+  --color-highlight-900: #2a021b;
+}
