@@ -1,7 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Suspense, lazy } from 'react';
+import { lazy } from 'react';
 import { Layout } from '@/shared/ui/layouts';
 import { ROUTES_CLIENT } from '@/shared/constants';
+import PageBoundary from '@/pages/errorBoundary';
 
 const HomePage = lazy(() => import('@/pages/home'));
 const FavoritesPage = lazy(() => import('@/pages/favorites'));
@@ -15,25 +16,25 @@ const router = createBrowserRouter([
       {
         index: true,
         element: (
-          <Suspense fallback={<div>Cargando...</div>}>
+          <PageBoundary>
             <HomePage />
-          </Suspense>
+          </PageBoundary>
         ),
       },
       {
         path: ROUTES_CLIENT.FAVORITES,
         element: (
-          <Suspense fallback={<div>Cargando...</div>}>
+          <PageBoundary>
             <FavoritesPage />
-          </Suspense>
+          </PageBoundary>
         ),
       },
       {
         path: ROUTES_CLIENT.LAUNCH_DETAIL(),
         element: (
-          <Suspense fallback={<div>Cargando...</div>}>
+          <PageBoundary>
             <LaunchDetailPage />
-          </Suspense>
+          </PageBoundary>
         ),
       },
     ],
