@@ -23,8 +23,9 @@ const LaunchPreviewCard = ({
         </Atom.Text>
         <ArrowRight className="w-4 h-4 ml-1" />
       </Atom.Box>
-      <Atom.Box className="flex w-full gap-2 justify-center items-center">
+      <Atom.Box className="flex w-full gap-2 justify-center items-center cursor-pointer">
         <Atom.Button
+          className="cursor-pointer"
           variant="outline"
           onClick={(e) => {
             e.stopPropagation();
@@ -37,7 +38,7 @@ const LaunchPreviewCard = ({
               fill={isFavorite ? 'currentColor' : 'none'}
               strokeWidth={2}
             />
-            {isFavorite ? 'Favorito' : 'Agregar a favoritos'}
+            {isFavorite ? 'Favorite' : 'Add to favorites'}
           </Atom.Text>
         </Atom.Button>
       </Atom.Box>
