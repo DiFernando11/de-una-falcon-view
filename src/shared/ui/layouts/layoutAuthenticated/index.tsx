@@ -1,8 +1,21 @@
-import { Outlet } from 'react-router';
+import { Outlet, useLocation } from 'react-router';
 import { NavMenu } from './navMenu';
 import { Atom } from '@shared/ui';
 
+import ReactGA from 'react-ga4';
+import { useEffect } from 'react';
+
+function usePageView() {
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log('DISOARE REACT SEND');
+    ReactGA.send({ hitType: 'pageview', page: location.pathname });
+  }, [location]);
+}
+
 const LayoutAuthenticated = () => {
+  usePageView();
   return (
     <Atom.Box className="bg-transparent grid grid-rows-[80px_1fr] h-screen w-screen">
       <header>
