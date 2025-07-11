@@ -12,7 +12,10 @@ const LaunchDetail = () => {
   const isCurrentFavorite = isFavorite(id || '');
 
   return (
-    <Atom.Box>
+    <Atom.Box className="space-y-8">
+      <Atom.Text as="h1" textType="heading">
+        Launch Details
+      </Atom.Text>
       {isLoading && <LaunchDetailCard.Skeleton />}
       {isError && (
         <Molecules.Alert type="error">

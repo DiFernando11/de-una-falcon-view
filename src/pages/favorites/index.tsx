@@ -16,21 +16,18 @@ function Favorites() {
 
   const hasFavorites = favorites && favorites.length > 0;
 
-  if (!hasFavorites) {
-    return (
-      <Molecules.Card className="flex justify-center max-w-[600px] m-auto gap-4">
-        <Atom.Text className="text-center" as="span" textType="subtitle">
-          You have no favorite launches yet 🚀
-        </Atom.Text>
-      </Molecules.Card>
-    );
-  }
-
   return (
     <Atom.Box className="space-y-8">
       <Atom.Text as="h1" textType="heading">
         Favorite SpaceX Launches
       </Atom.Text>
+      {!hasFavorites && (
+        <Molecules.Card className="flex justify-center max-w-[600px] m-auto gap-4">
+          <Atom.Text className="text-center" as="span" textType="subtitle">
+            You have no favorite launches yet 🚀
+          </Atom.Text>
+        </Molecules.Card>
+      )}
       <Organisms.CardGallery
         cards={favorites.map((launch) => ({
           id: launch.id,
@@ -45,12 +42,14 @@ function Favorites() {
           ),
         }))}
       />
-      <Atom.Box className="flex justify-center mt-8">
-        <Atom.Button variant="primary" className="cursor-pointer" onClick={handleClearFavorites}>
-          <Trash className="w-5 h-5" />
-          Eliminar Todos
-        </Atom.Button>
-      </Atom.Box>
+      {hasFavorites && (
+        <Atom.Box className="flex justify-center mt-8">
+          <Atom.Button variant="primary" className="cursor-pointer" onClick={handleClearFavorites}>
+            <Trash className="w-5 h-5" />
+            Eliminar Todos
+          </Atom.Button>
+        </Atom.Box>
+      )}
     </Atom.Box>
   );
 }
