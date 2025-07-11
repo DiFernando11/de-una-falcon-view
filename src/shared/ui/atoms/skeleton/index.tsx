@@ -6,10 +6,7 @@ interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const Skeleton = ({ children, className, ...rest }: SkeletonProps) => (
-  <div
-    className={twMerge('animate-pulse flex justify-center flex-col items-center gap-4', className)}
-    {...rest}
-  >
+  <div className={twMerge('animate-pulse flex flex-col gap-4', className)} {...rest}>
     {children}
   </div>
 );

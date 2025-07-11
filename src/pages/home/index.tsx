@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router';
 import { useGetLaunchesQuery } from '@/services';
 import LaunchPreviewCard from '@/shared/components/launchPreviewCard';
 import { ROUTES_CLIENT } from '@/shared/constants';
-import { Atom, Organisms } from '@/shared/ui';
+import { Atom, Molecules, Organisms } from '@/shared/ui';
 import { useFavoritesLaunch } from '@/shared/hooks';
 import { useState } from 'react';
 
@@ -12,7 +12,11 @@ function Home() {
   const navigate = useNavigate();
   const [offset, setOffset] = useState(0);
   const { isFavorite, handleAddOrRemoveFavoriteLaunch } = useFavoritesLaunch();
-  const { data: launches = [], isFetching } = useGetLaunchesQuery({ limit: LIMIT, offset });
+  const {
+    data: launches = [],
+    isFetching,
+    isError,
+  } = useGetLaunchesQuery({ limit: LIMIT, offset });
 
   const handleLoadMore = () => setOffset((prev) => prev + LIMIT);
 
@@ -47,6 +51,13 @@ function Home() {
             children: <LaunchPreviewCard.Skeleton />,
           }))}
         />
+      )}
+      {isError && (
+        <Molecules.Alert type="error">
+          <Atom.Text>
+            An error occurred while fetching the SpaceX launches. Please try again later.
+          </Atom.Text>
+        </Molecules.Alert>
       )}
       {!isFetching && launches.length && launches.length % LIMIT === 0 && (
         <Atom.Box className="flex justify-center mt-8">

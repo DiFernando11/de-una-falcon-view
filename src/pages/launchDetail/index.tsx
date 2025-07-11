@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { Atom } from '@/shared/ui';
+import { Atom, Molecules } from '@/shared/ui';
 import { useGetLaunchByIdQuery } from '@/services';
 import LaunchDetailCard from './components/launchDetailCard';
 import { useFavoritesLaunch } from '@/shared/hooks';
@@ -7,14 +7,20 @@ import { useFavoritesLaunch } from '@/shared/hooks';
 const LaunchDetail = () => {
   const { id } = useParams<{ id: string }>();
   const { isFavorite, handleAddOrRemoveFavoriteLaunch } = useFavoritesLaunch();
-  const { data: launch, isLoading, isError } = useGetLaunchByIdQuery(id || '');
+  const { data: launch, isError, isLoading } = useGetLaunchByIdQuery(id || '');
 
   const isCurrentFavorite = isFavorite(id || '');
 
   return (
     <Atom.Box>
-      {isLoading && <div>Cargando...</div>}
-      {isError && <div>Error al cargar</div>}
+      {isLoading && <LaunchDetailCard.Skeleton />}
+      {isError && (
+        <Molecules.Alert type="error">
+          <Atom.Text>
+            An error occurred while fetching the SpaceX launches. Please try again later.
+          </Atom.Text>
+        </Molecules.Alert>
+      )}
       <LaunchDetailCard
         handleAddOrRemoveFavoriteLaunch={handleAddOrRemoveFavoriteLaunch}
         launch={launch}
