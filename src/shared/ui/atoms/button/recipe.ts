@@ -7,7 +7,7 @@ export const buttonRecipe = cva(
       variant: {
         primary: 'bg-blue-600 text-white hover:bg-blue-700',
         secondary: 'bg-gray-200 text-black hover:bg-gray-300',
-        outline: 'border border-gray-400 text-gray-700 bg-transparent',
+        outline: 'text-gray-700 text-white bg-transparent',
       },
       size: {
         sm: 'text-sm px-3 py-1',

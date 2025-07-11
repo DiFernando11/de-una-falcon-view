@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Heart, Rocket } from 'lucide-react';
+import { Home, Heart } from 'lucide-react';
 import clsx from 'clsx';
 import { ROUTES_CLIENT } from '@/shared/constants';
 import { twMerge } from 'tailwind-merge';
@@ -8,7 +8,6 @@ import type { ItemsMenuProps } from './types';
 const menuItems = [
   { label: 'Home', icon: Home, to: ROUTES_CLIENT.HOME },
   { label: 'Favorites', icon: Heart, to: ROUTES_CLIENT.FAVORITES },
-  { label: 'Launch Detail', icon: Rocket, to: ROUTES_CLIENT.LAUNCH_DETAIL('124') },
 ];
 
 const ItemsMenu = ({ open }: ItemsMenuProps) => {
