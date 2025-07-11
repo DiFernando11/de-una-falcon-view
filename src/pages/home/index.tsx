@@ -1,24 +1,15 @@
-import type { LaunchAdapter } from '@/domain/models';
+import { useNavigate } from 'react-router';
 import { useGetLaunchesQuery } from '@/services';
 import LaunchPreviewCard from '@/shared/components/launchPreviewCard';
 import { ROUTES_CLIENT } from '@/shared/constants';
 import { Atom, Organisms } from '@/shared/ui';
-import type { RootState } from '@/store';
-import { addFavorite, removeFavorite } from '@/store/favoritesSlice';
-import { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router';
+import type { LaunchAdapter } from '@/domain/models';
+import { useFavoritesLaunch } from '@/shared/hooks';
 
 function Home() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { isFavorite, handleAddFavorite, handleRemoveFavorite } = useFavoritesLaunch();
   const { data: launches, isLoading, isError } = useGetLaunchesQuery({ limit: 5, offset: 0 });
-  const favorites = useSelector((state: RootState) => state.favorites.favorites);
-
-  const isFavorite = useCallback(
-    (id: string) => favorites.some((fav) => fav.id === id),
-    [favorites]
-  );
 
   const handleRedirect = (id: string) => {
     navigate(ROUTES_CLIENT.LAUNCH_DETAIL(id));
@@ -26,9 +17,9 @@ function Home() {
 
   const handleAddOrRemoveFavoriteLaunch = (launch: LaunchAdapter) => {
     if (isFavorite(launch.id)) {
-      dispatch(removeFavorite(launch.id));
+      handleRemoveFavorite(launch.id);
     } else {
-      dispatch(addFavorite(launch));
+      handleAddFavorite(launch);
     }
   };
 

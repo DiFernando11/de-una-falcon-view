@@ -1,6 +1,6 @@
 import type { LaunchAdapter } from '@/domain/models';
 
-export interface LaunchPreviewCard {
+export interface LaunchPreviewCardProps {
   launch: LaunchAdapter;
   isFavorite: boolean;
   handleAddOrRemoveFavoriteLaunch: () => void;

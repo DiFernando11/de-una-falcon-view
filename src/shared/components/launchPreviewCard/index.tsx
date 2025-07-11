@@ -1,14 +1,14 @@
 import { Rocket, ArrowRight, Star } from 'lucide-react';
 import { Atom } from '@/shared/ui';
 import clsx from 'clsx';
-import type { LaunchPreviewCard } from './types';
+import type { LaunchPreviewCardProps } from './types';
 
 const LaunchPreviewCard = ({
   launch,
   isFavorite,
   handleAddOrRemoveFavoriteLaunch,
   onClick,
-}: LaunchPreviewCard) => {
+}: LaunchPreviewCardProps) => {
   return (
     <Atom.Box
       onClick={onClick}
