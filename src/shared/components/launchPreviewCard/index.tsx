@@ -17,11 +17,11 @@ const LaunchPreviewCard = ({
       tabIndex={0}
     >
       <Atom.Box className="flex gap-2 items-center">
-        <Rocket className="w-8 h-8 text-accent-500" />
+        <Rocket className="w-8 h-8 text-accent-500 min-w-8" />
         <Atom.Text textType="heading" as="h3">
           {launch.missionName}
         </Atom.Text>
-        <ArrowRight className="w-4 h-4 ml-1" />
+        <ArrowRight className="w-4 h-4 ml-1 min-w-4" />
       </Atom.Box>
       <Atom.Box className="flex w-full gap-2 justify-center items-center cursor-pointer">
         <Atom.Button

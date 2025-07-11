@@ -11,7 +11,6 @@ function App() {
       ReactGA.initialize(GA_MEASUREMENT_ID);
     }
   }, []);
-
   return <RouterProvider router={router} />;
 }
 

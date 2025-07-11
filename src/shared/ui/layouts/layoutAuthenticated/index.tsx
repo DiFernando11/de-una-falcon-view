@@ -9,7 +9,6 @@ function usePageView() {
   const location = useLocation();
 
   useEffect(() => {
-    console.log('DISOARE REACT SEND');
     ReactGA.send({ hitType: 'pageview', page: location.pathname });
   }, [location]);
 }
@@ -17,7 +16,7 @@ function usePageView() {
 const LayoutAuthenticated = () => {
   usePageView();
   return (
-    <Atom.Box className="bg-transparent grid grid-rows-[80px_1fr] h-screen w-screen">
+    <Atom.Box className="bg-transparent grid grid-rows-[80px_1fr]">
       <header>
         <NavMenu />
       </header>
