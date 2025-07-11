@@ -4,14 +4,17 @@ import type { CardProps } from '../../molecules/card/types';
 
 const exampleCards: CardProps[] = [
   {
+    id: 'card-1',
     theme: 'glassDark',
     children: <span>Card 1</span>,
   },
   {
+    id: 'card-2',
     theme: 'glassWhite',
     children: <span>Card 2</span>,
   },
   {
+    id: 'card-3',
     theme: 'glassDark',
     children: <span>Card 3</span>,
   },

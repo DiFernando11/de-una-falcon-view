@@ -23,6 +23,19 @@ export const launchesApi = createApi({
       }),
       transformResponse: (response: { data: { launchesPast: Launch[] } }) =>
         mapApiToLaunchList(response.data.launchesPast),
+      merge: (currentCache, newItems) => {
+        const ids = new Set(currentCache.map((item) => item.id));
+        const nuevos = newItems.filter((item) => !ids.has(item.id));
+        return [...currentCache, ...nuevos];
+      },
+      serializeQueryArgs: ({ endpointName }) => {
+        return endpointName;
+      },
+      forceRefetch({ currentArg, previousArg }) {
+        return (
+          currentArg?.offset !== previousArg?.offset || currentArg?.limit !== previousArg?.limit
+        );
+      },
     }),
     getLaunchById: builder.query<LaunchDetailAdapter, string>({
       query: (id) => ({
@@ -34,7 +47,6 @@ export const launchesApi = createApi({
         },
       }),
       transformResponse: (response: { data: { launch: LaunchDetail } }) => {
-        console.log('GraphQL RAW launch response:', response);
         return mapApiToLaunchDetail(response.data.launch);
       },
     }),

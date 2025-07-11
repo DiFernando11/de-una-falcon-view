@@ -2,6 +2,7 @@ import { Rocket, ArrowRight, Star } from 'lucide-react';
 import { Atom } from '@/shared/ui';
 import clsx from 'clsx';
 import type { LaunchPreviewCardProps } from './types';
+import SkeletonPreviewLaunch from './skeletonPreviewLaunch';
 
 const LaunchPreviewCard = ({
   launch,
@@ -45,5 +46,7 @@ const LaunchPreviewCard = ({
     </Atom.Box>
   );
 };
+
+LaunchPreviewCard.Skeleton = SkeletonPreviewLaunch;
 
 export default LaunchPreviewCard;
